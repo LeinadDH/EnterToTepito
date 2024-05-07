@@ -4,6 +4,8 @@ using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField]
+    private Animator _animator;
+    [SerializeField]
     private float _speed = 5f;
     private Rigidbody2D _rb;
     private Vector2 _moveInput;
@@ -17,6 +19,7 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
+        _animator.SetFloat("Horizontal", _moveInput.magnitude);
         _smoothedMoveInput = Vector2.SmoothDamp(
             _smoothedMoveInput, _moveInput, ref _moveInputSmoothedVelocity, 0.1f);
         _rb.velocity = _smoothedMoveInput * _speed;
@@ -25,6 +28,5 @@ public class PlayerController : MonoBehaviour
     private void OnMove(InputValue value)
     {
         _moveInput = value.Get<Vector2>();
-        
     }
 }
