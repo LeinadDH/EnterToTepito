@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: e4e4b0dee0280594580ad0cc1c736714
+guid: 3462c826d2278f04cbe0663682d2d8ef
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 200
+  spritePixelsToUnits: 400
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -123,22 +123,22 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: death_0_0
+      name: BillBala_0
       rect:
         serializedVersion: 2
-        x: 620
-        y: 469
-        width: 680
-        height: 680
+        x: 84
+        y: 117
+        width: 372
+        height: 321
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 516c27c899832a745b15802a33191067
-      internalID: 2073592970
+      spriteID: 2a905ff94ccc618499a9c685e8383d8b
+      internalID: 70812797
       vertices: []
       indices: 
       edges: []
@@ -154,7 +154,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      death_0_0: 2073592970
+      BillBala_0: 70812797
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

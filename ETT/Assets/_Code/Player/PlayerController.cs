@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour
     
     private void Start()
     {
+        Cursor.visible = false;
         _rb = GetComponent<Rigidbody2D>();
         _animator = GetComponent<Animator>();
         _spriteRenderer = GetComponent<SpriteRenderer>();

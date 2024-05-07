@@ -72,6 +72,34 @@
                     "isPartOfComposite": true
                 }
             ]
+        },
+        {
+            "name": "BasicWeapon",
+            "id": "1048693b-acae-464c-a65c-c4a8c00be955",
+            "actions": [
+                {
+                    "name": "BasicShoot",
+                    "type": "Button",
+                    "id": "5d59349e-76df-46ed-bed1-5fe5b6a9d2f6",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "21a66d7a-35c6-4ead-891d-d2d222d6a4cf",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "BasicShoot",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": []
