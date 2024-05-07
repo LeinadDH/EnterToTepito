@@ -36,7 +36,7 @@ public class Projectile : MonoBehaviour
                 circleCollider2D.isTrigger = true;
                 circleCollider2D.radius = 2.0f;
                 _animator.SetBool("Destroy", true);
-                Invoke("DesactivarObjeto", 0.5f);
+                Invoke("DeactivateObject", 0.5f);
             }
             else
             {
@@ -45,7 +45,7 @@ public class Projectile : MonoBehaviour
         }
     }
     
-    private void DesactivarObjeto()
+    private void DeactivateObject()
     {
         gameObject.SetActive(false);
     }
