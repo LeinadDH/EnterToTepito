@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -9,6 +8,7 @@ public class UICurrency : MonoBehaviour
     [SerializeField] private IntValue _wave;
     [SerializeField] private IntValue _enemiesKilled;
     [SerializeField] private IntValue _enemyToSpawn;
+    [SerializeField] private IntValue _itemCost;
     
     [SerializeField] private TMPro.TextMeshProUGUI _coinsTxt;
     [SerializeField] private TMPro.TextMeshProUGUI _scoreTxt;
@@ -21,7 +21,8 @@ public class UICurrency : MonoBehaviour
 
     private void Start()
     {
-        _coins.value = 0;
+        _itemCost.value = 2;
+        _coins.value = 100;
         _score.value = 0;
         _wave.value = 1;
         _enemiesKilled.value = 0;
@@ -41,6 +42,7 @@ public class UICurrency : MonoBehaviour
             _gun.SetActive(false);
             Cursor.visible = true;
             _ShopUI.SetActive(true);
+            gameObject.GetComponent<ShopUI>().ObjectsCost();
         }
     }
 }

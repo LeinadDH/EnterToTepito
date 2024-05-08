@@ -3,26 +3,29 @@ using UnityEngine.UI;
 
 public class PlayerHP : MonoBehaviour
 {
-    public int maxHealth = 100;
-    public int maxShield = 50;
-    public float shieldRegenRate = 2f;
-    public float shieldRegenDelay = 5f;
+    [SerializeField] private IntValue _currentHP;
+    [SerializeField] private IntValue _maxHP;
+    [SerializeField] private IntValue _maxShield;
+    [SerializeField] private IntValue _shieldRegen;
     public Slider healthSlider;
     public Slider shieldSlider;
-
-    private int currentHealth;
+    
+    private float shieldRegenDelay = 5f;
+    
     private int currentShield;
     private float lastDamageTime;
     private float lastShieldRegenTime;
 
     void Start()
     {
-        currentHealth = maxHealth;
-        currentShield = maxShield;
+        _shieldRegen.value = 2;
+        _maxHP.value = 40;
+        _maxShield.value = 20;
+        _currentHP.value = _maxHP.value;
+        currentShield = _maxShield.value;
         lastDamageTime = Time.time;
         lastShieldRegenTime = Time.time;
-
-        // Actualiza los valores iniciales de las barras deslizantes
+        
         UpdateSliders();
     }
 
@@ -51,21 +54,20 @@ public class PlayerHP : MonoBehaviour
             currentShield -= damage;
             if (currentShield < 0)
             {
-                currentHealth += currentShield;
+                _currentHP.value += currentShield;
                 currentShield = 0;
             }
         }
         else
         {
-            currentHealth -= damage;
+            _currentHP.value -= damage;
         }
 
-        if (currentHealth <= 0)
+        if (_currentHP.value <= 0)
         {
             Die();
         }
-
-        // Actualiza las barras deslizantes después de recibir daño
+        
         UpdateSliders();
     }
 
@@ -73,26 +75,23 @@ public class PlayerHP : MonoBehaviour
     {
         if (Time.time - lastShieldRegenTime > 1f)
         {
-            currentShield += 2;
-            if (currentShield > maxShield)
+            currentShield += _shieldRegen.value;
+            if (currentShield > _maxShield.value)
             {
-                currentShield = maxShield;
+                currentShield = _maxShield.value;
             }
             lastShieldRegenTime = Time.time;
-
-            // Actualiza las barras deslizantes después de regenerar el escudo
+            
             UpdateSliders();
         }
     }
 
     void UpdateSliders()
     {
-        // Asegúrate de que las referencias de los sliders estén asignadas en el Inspector
         if (healthSlider != null && shieldSlider != null)
         {
-            // Actualiza los valores de las barras deslizantes
-            healthSlider.value = (float)currentHealth / maxHealth;
-            shieldSlider.value = (float)currentShield / maxShield;
+            healthSlider.value = (float)_currentHP.value / _maxHP.value;
+            shieldSlider.value = (float)currentShield / _maxShield.value;
         }
     }
 
