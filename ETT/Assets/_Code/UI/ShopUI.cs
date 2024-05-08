@@ -50,9 +50,8 @@ public class ShopUI : MonoBehaviour
         {
             _coins.value -= _itemCost.value;
             _itemCost.value += 1;
-            int temp = _maxCanon.value;
-            _maxCanon.value = temp + 1;
-            _currentCanon.value += _maxCanon.value;
+            _maxCanon.value++;
+            _currentCanon.value = _maxCanon.value;
             ObjectsCost();
         }
     }
@@ -96,7 +95,7 @@ public class ShopUI : MonoBehaviour
         if (_coins.value >= 2)
         {
             _coins.value -= 2;
-            _currentCanon.value += _maxCanon.value;
+            _currentCanon.value = _maxCanon.value;
             ObjectsCost();
         }
     }
