@@ -14,9 +14,9 @@ GameObject:
   - component: {fileID: 7659394408753897283}
   - component: {fileID: 6740377383917515884}
   - component: {fileID: 7345835019845565104}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BillBala
-  m_TagString: Untagged
+  m_TagString: StrongBullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -104,6 +104,7 @@ MonoBehaviour:
   _speed: 10
   _isShotgun: 1
   _animator: {fileID: 7345835019845565104}
+  _poolName: StrongBullet
 --- !u!50 &7659394408753897283
 Rigidbody2D:
   serializedVersion: 4

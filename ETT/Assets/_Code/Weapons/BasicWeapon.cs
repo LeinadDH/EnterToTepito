@@ -3,7 +3,6 @@ using UnityEngine.InputSystem;
 
 public class BasicWeapon : MonoBehaviour
 {
-    [SerializeField] private Projectile _projectilePrefab;
     [SerializeField] private Transform _spawnPoint;
     [Space(5f)]
     [SerializeField] private InputAction fireAction;
@@ -49,7 +48,10 @@ public class BasicWeapon : MonoBehaviour
     
     private void Shoot()
     {
-        Instantiate(_projectilePrefab, _spawnPoint.position, Quaternion.identity).Init(transform.right);
+        Projectile instance = ObjectPooler.DequeueObject<Projectile>("BasicBullet");
+        instance.gameObject.SetActive(true);
+        instance.transform.position = _spawnPoint.position;
+        instance.Init(transform.right);
     }
 
     private void CoolDown()

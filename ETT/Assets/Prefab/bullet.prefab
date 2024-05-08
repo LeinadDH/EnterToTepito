@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 5072572312160201647}
   m_Layer: 7
   m_Name: bullet
-  m_TagString: Projectile
+  m_TagString: BasicBullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -101,6 +101,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _rb: {fileID: 5072572312160201647}
   _speed: 5
+  _isShotgun: 0
+  _animator: {fileID: 0}
+  _poolName: BasicBullet
 --- !u!58 &6722743339757013001
 CircleCollider2D:
   m_ObjectHideFlags: 0

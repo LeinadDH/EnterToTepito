@@ -4,7 +4,6 @@ using UnityEngine.InputSystem;
 public class ShotGun : MonoBehaviour
 {
     [SerializeField] private int _bulletsAmount = 2;
-    [SerializeField] private Projectile _projectilePrefab;
     [SerializeField] private Transform _spawnPoint;
     [Space(5f)]
     [SerializeField] private InputAction fireAction;
@@ -28,7 +27,11 @@ public class ShotGun : MonoBehaviour
     {
         if(_bulletsAmount > 0)
         {
-            Instantiate(_projectilePrefab, _spawnPoint.position, this.transform.rotation).Init(transform.right);
+            Projectile instance = ObjectPooler.DequeueObject<Projectile>("StrongBullet");
+            instance.gameObject.SetActive(true);
+            instance.transform.position = _spawnPoint.position;
+            instance.transform.rotation = _spawnPoint.rotation;
+            instance.Init(transform.right);
             _bulletsAmount--;
         }
     }

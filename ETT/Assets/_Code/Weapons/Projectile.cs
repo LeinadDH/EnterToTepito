@@ -6,6 +6,7 @@ public class Projectile : MonoBehaviour
     [SerializeField] private float _speed;
     [SerializeField] private bool _isShotgun = false;
     [SerializeField] private Animator _animator;
+    [SerializeField] private string _poolName;
 
     private void OnDisable()
     {
@@ -34,13 +35,14 @@ public class Projectile : MonoBehaviour
                 _rb.velocity = Vector2.zero;
                 CircleCollider2D circleCollider2D = this.gameObject.AddComponent<CircleCollider2D>();
                 circleCollider2D.isTrigger = true;
-                circleCollider2D.radius = 2.0f;
+                circleCollider2D.radius = 3.0f;
                 _animator.SetBool("Destroy", true);
                 Invoke("DeactivateObject", 0.5f);
             }
             else
             {
                 gameObject.SetActive(false);
+                ObjectPooler.EnqueueObject(this, _poolName);
             }
         }
     }
@@ -48,5 +50,6 @@ public class Projectile : MonoBehaviour
     private void DeactivateObject()
     {
         gameObject.SetActive(false);
+        ObjectPooler.EnqueueObject(this, _poolName);
     }
 }

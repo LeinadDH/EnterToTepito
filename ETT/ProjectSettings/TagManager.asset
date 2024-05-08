@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - Projectile
+  - BasicBullet
+  - StrongBullet
   layers:
   - Default
   - TransparentFX
