@@ -36,7 +36,7 @@ public class EnemyHP : MonoBehaviour
         currentHP -= damage;
         if(currentHP <= 0)
         {
-            Destroy(gameObject);
+            ObjectPooler.EnqueueObject(this, "Enemy");
         }
     }
 }

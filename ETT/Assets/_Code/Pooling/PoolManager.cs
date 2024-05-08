@@ -4,6 +4,7 @@ public class PoolManager : MonoBehaviour
 {
     [SerializeField] private Projectile _basicProyectilePrefab;
     [SerializeField] private Projectile _strongProyectilePrefab;
+    [SerializeField] private EnemyHP _enemyPrefab;
 
     private void Awake()
     {
@@ -12,7 +13,8 @@ public class PoolManager : MonoBehaviour
 
     private void SetupPool()
     {
-        ObjectPooler.SetupPool(_basicProyectilePrefab, 20, "BasicBullet");
-        ObjectPooler.SetupPool(_strongProyectilePrefab, 20, "StrongBullet");
+        ObjectPooler.SetupPool(_basicProyectilePrefab, 10, "BasicBullet");
+        ObjectPooler.SetupPool(_strongProyectilePrefab, 12, "StrongBullet");
+        ObjectPooler.SetupPool(_enemyPrefab, 64, "Enemy");
     }
 }
