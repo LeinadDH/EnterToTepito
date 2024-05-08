@@ -1,9 +1,11 @@
-using System;
 using UnityEngine;
 
 public class EnemyHP : MonoBehaviour
 {
-    public int maxHP = 100;
+    [SerializeField] private IntValue _enemiesKilled;
+    [SerializeField] private IntValue _Score;
+    [SerializeField] private IntValue _coins;
+    private int maxHP = 100;
     private int currentHP;
 
     private void OnEnable()
@@ -36,6 +38,14 @@ public class EnemyHP : MonoBehaviour
         currentHP -= damage;
         if(currentHP <= 0)
         {
+            int coinPercent = Random.Range(1, 5);
+            
+            if (coinPercent ==  1)
+            {
+                _coins.value += 1;
+            }
+            _Score.value += 100;
+            _enemiesKilled.value++;
             ObjectPooler.EnqueueObject(this, "Enemy");
         }
     }

@@ -157,7 +157,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8fcdd275960e4d240a800e3dcf5d7499, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHP: 100
+  _enemiesKilled: {fileID: 11400000, guid: 23164d56a2e88b649b47c6dafda86919, type: 2}
+  _Score: {fileID: 11400000, guid: 819da57089285344cbcfb32c23158662, type: 2}
+  _coins: {fileID: 11400000, guid: 645e32123ed406844892c9fdcbd12f44, type: 2}
 --- !u!114 &1240220845739444016
 MonoBehaviour:
   m_ObjectHideFlags: 0
