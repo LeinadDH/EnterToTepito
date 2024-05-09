@@ -1,12 +1,14 @@
 using UnityEngine;
 using UnityEngine.UI;
 
+
 public class PlayerHP : MonoBehaviour
 {
     [SerializeField] private IntValue _currentHP;
     [SerializeField] private IntValue _maxHP;
     [SerializeField] private IntValue _maxShield;
     [SerializeField] private IntValue _shieldRegen;
+    [SerializeField] private GameObject _endGameCanvas;
     public Slider healthSlider;
     public Slider shieldSlider;
     
@@ -18,6 +20,7 @@ public class PlayerHP : MonoBehaviour
 
     void Start()
     {
+        _endGameCanvas.SetActive(false);
         _shieldRegen.value = 2;
         _maxHP.value = 40;
         _maxShield.value = 20;
@@ -97,6 +100,7 @@ public class PlayerHP : MonoBehaviour
 
     void Die()
     {
-        Debug.Log("Player died!");
+        _endGameCanvas.SetActive(true);
+        gameObject.SetActive(false);
     }
 }

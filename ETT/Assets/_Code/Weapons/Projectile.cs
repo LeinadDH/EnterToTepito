@@ -8,19 +8,6 @@ public class Projectile : MonoBehaviour
     [SerializeField] private Animator _animator;
     [SerializeField] private string _poolName;
 
-    private void OnDisable()
-    {
-        if (_isShotgun)
-        {
-            _animator.SetBool("Destroy", false);
-            CircleCollider2D circleCollider2D = this.gameObject.GetComponent<CircleCollider2D>();
-            if (circleCollider2D != null)
-            {
-                Destroy(circleCollider2D);
-            }
-        }
-    }
-
     public void Init(Vector2 Dir)
     {
         _rb.velocity = Dir * _speed;
@@ -30,7 +17,7 @@ public class Projectile : MonoBehaviour
     {
         if (!other.gameObject.CompareTag("Player") && !other.gameObject.CompareTag("Projectile"))
         {
-            if (_isShotgun)
+            if (_isShotgun && !gameObject.GetComponent<CircleCollider2D>())
             {
                 _rb.velocity = Vector2.zero;
                 CircleCollider2D circleCollider2D = this.gameObject.AddComponent<CircleCollider2D>();
@@ -49,6 +36,15 @@ public class Projectile : MonoBehaviour
     
     private void DeactivateObject()
     {
+        if (_isShotgun)
+        {
+            _animator.SetBool("Destroy", false);
+            CircleCollider2D circleCollider2D = this.gameObject.GetComponent<CircleCollider2D>();
+            if (circleCollider2D != null)
+            {
+                Destroy(circleCollider2D);
+            }
+        }
         gameObject.SetActive(false);
         ObjectPooler.EnqueueObject(this, _poolName);
     }

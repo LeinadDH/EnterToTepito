@@ -116,7 +116,6 @@ public class ShopUI : MonoBehaviour
         _enemyToSpawn.value += 4;
         _enemiesSpawned.value = 0;
         _wave.value++;
-        Cursor.visible = false;
         _playerInput.enabled = true;
         _gun.SetActive(true);
         _enemySpawner.NewWave();

@@ -1,5 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using TMPro;
+using System.Collections.Generic;
 
 public class UICurrency : MonoBehaviour
 {
@@ -10,9 +12,11 @@ public class UICurrency : MonoBehaviour
     [SerializeField] private IntValue _enemyToSpawn;
     [SerializeField] private IntValue _itemCost;
     
-    [SerializeField] private TMPro.TextMeshProUGUI _coinsTxt;
-    [SerializeField] private TMPro.TextMeshProUGUI _scoreTxt;
-    [SerializeField] private TMPro.TextMeshProUGUI _waveTxt;
+    [SerializeField] private TextMeshProUGUI _coinsTxt;
+    [SerializeField] private TextMeshProUGUI _scoreTxt;
+    [SerializeField] private TextMeshProUGUI _waveTxt;
+    [SerializeField] private TextMeshProUGUI _waveEndGameTxt;
+    [SerializeField] private TextMeshProUGUI _scoreEndGameTxt;
     
     [SerializeField] private GameObject _ShopUI;
     
@@ -22,7 +26,7 @@ public class UICurrency : MonoBehaviour
     private void Start()
     {
         _itemCost.value = 2;
-        _coins.value = 100;
+        _coins.value = 0;
         _score.value = 0;
         _wave.value = 1;
         _enemiesKilled.value = 0;
@@ -35,14 +39,21 @@ public class UICurrency : MonoBehaviour
         _coinsTxt.text = "Coins: " +  _coins.value;
         _scoreTxt.text = "Score: " + _score.value;
         _waveTxt.text = "Wave: " + _wave.value;
-        
-        if(_enemiesKilled.value == _enemyToSpawn.value)
+        _waveEndGameTxt.text = "Wave: " + _wave.value;
+        _scoreEndGameTxt.text = "Score: " + _score.value;
+
+        if (_enemiesKilled.value >= _enemyToSpawn.value)
         {
+            var restEnemies = FindObjectsOfType<EnemyHP>();
+            foreach (var enemy in restEnemies)
+            {
+                enemy.gameObject.SetActive(false);
+            }
             _playerInput.enabled = false;
             _gun.SetActive(false);
-            Cursor.visible = true;
             _ShopUI.SetActive(true);
             gameObject.GetComponent<ShopUI>().ObjectsCost();
+
         }
     }
 }
