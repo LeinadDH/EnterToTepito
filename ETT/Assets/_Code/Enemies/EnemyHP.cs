@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class EnemyHP : MonoBehaviour
@@ -11,6 +12,7 @@ public class EnemyHP : MonoBehaviour
     private void OnEnable()
     {
         currentHP = maxHP;
+        gameObject.GetComponent<SpriteRenderer>().color = Color.white;
     }
 
     private void OnCollisionEnter2D(Collision2D other)
@@ -35,6 +37,7 @@ public class EnemyHP : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
+        StartCoroutine(ChangeColor());
         currentHP -= damage;
         if(currentHP <= 0)
         {
@@ -48,5 +51,12 @@ public class EnemyHP : MonoBehaviour
             _enemiesKilled.value++;
             ObjectPooler.EnqueueObject(this, "Enemy");
         }
+    }
+    
+    IEnumerator ChangeColor()
+    {
+        gameObject.GetComponent<SpriteRenderer>().color = Color.red;
+        yield return new WaitForSeconds(0.1f);
+        gameObject.GetComponent<SpriteRenderer>().color = Color.white;
     }
 }

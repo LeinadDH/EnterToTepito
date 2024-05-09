@@ -11,9 +11,11 @@ public class UICurrency : MonoBehaviour
     [SerializeField] private IntValue _enemiesKilled;
     [SerializeField] private IntValue _enemyToSpawn;
     [SerializeField] private IntValue _itemCost;
+    [SerializeField] private IntValue _currentCanon;
     
     [SerializeField] private TextMeshProUGUI _coinsTxt;
     [SerializeField] private TextMeshProUGUI _scoreTxt;
+    [SerializeField] private TextMeshProUGUI _bulletsTxt;
     [SerializeField] private TextMeshProUGUI _waveTxt;
     [SerializeField] private TextMeshProUGUI _waveEndGameTxt;
     [SerializeField] private TextMeshProUGUI _scoreEndGameTxt;
@@ -39,6 +41,7 @@ public class UICurrency : MonoBehaviour
         _coinsTxt.text = "Coins: " +  _coins.value;
         _scoreTxt.text = "Score: " + _score.value;
         _waveTxt.text = "Wave: " + _wave.value;
+        _bulletsTxt.text = "Bullets: " + _currentCanon.value;
         _waveEndGameTxt.text = "Wave: " + _wave.value;
         _scoreEndGameTxt.text = "Score: " + _score.value;
 
